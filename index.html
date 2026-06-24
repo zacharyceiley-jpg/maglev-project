@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: url('https://media.tenor.com/2NuZC1zX0HwAAAAd/transrapid-maglev.gif') no-repeat center center fixed;
+  background-size: cover;
+  padding: 40px;
+  color: white;
+}
+
+/* Liquid Glass Button Style */
+button {
+  width: 100%;
+  padding: 15px 20px;
+  margin: 12px 0;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  transition: 0.2s;
+}
+
+button:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.02);
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.65);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Popup Box */
+.box {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(15px);
+  padding: 25px;
+  width: 70%;
+  max-width: 650px;
+  border-radius: 15px;
+  color: white;
+  box-shadow: 0 4px 25px rgba(0,0,0,0.4);
+  position: relative;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+  color: white;
+}
+</style>
+</head>
+
+<body>
+
+<h2 style="text-shadow: 0 0 10px black;">Maglev Train Interactive Information</h2>
+
+<button onclick="showAnswer('magnetism')">
+Describe, in your own words how the application uses the force of magnetism (where does the force act? How does the application work?)
+</button>
+
+<button onclick="showAnswer('useful')">
+Describe how the application is useful (what does it allow us to do?)
+</button>
+
+<button onclick="showAnswer('image')">
+Draw a picture or find an image of the application working.
+</button>
+
+<div class="overlay" id="overlay">
+  <div class="box">
+    <span class="close-btn" onclick="closeOverlay()">✖</span>
+    <div id="answer"></div>
+  </div>
+</div>
+
+<script>
+function showAnswer(type) {
+  let text = "";
+
+  if (type === "magnetism") {
+    text = `
+      <h3>How the Maglev Train Uses Magnetism</h3>
+      <p>A Maglev train is a super-fast train that uses powerful magnets to float above the tracks and move forward.</p>
+
+      <h4>Where the Force Acts</h4>
+      <p>The magnetic force acts directly between the bottom of the train and the special track, called a guideway. 
+      Large electromagnets are built into both the underside of the train and the walls of the track.</p>
+
+      <h4>How It Works</h4>
+      <p><strong>Floating (Levitation):</strong> The magnets on the track and the bottom of the train have the same magnetic pole. 
+      Since like poles repel, the magnetic push lifts the train 1–10 cm above the track.</p>
+
+      <p><strong>Moving (Propulsion):</strong> The track switches magnetic poles rapidly. 
+      The magnets at the front of the train are pulled forward, while the magnets behind are pushed away. 
+      This push–pull motion moves the train at high speeds.</p>
+    `;
+  }
+
+  if (type === "useful") {
+    text = `
+      <h3>Why the Application Is Useful</h3>
+      <p>Maglev technology allows people to travel between cities faster than regular trains while using less energy.</p>
+
+      <p><strong>Super High Speeds:</strong> With no friction from wheels, Maglev trains can travel over 600 km/h.</p>
+
+      <p><strong>Smoother Rides:</strong> The train floats, so passengers experience a quiet, smooth ride.</p>
+
+      <p><strong>Less Wear and Tear:</strong> No rubbing parts means fewer repairs and longer-lasting equipment.</p>
+
+      <p><strong>Better for Earth:</strong> Maglev trains run on electricity and produce no dirty exhaust smoke.</p>
+    `;
+  }
+
+  if (type === "image") {
+    text = `
+      <h3>Maglev Train Image</h3>
+      <img src="https://cdn.britannica.com/79/256579-159-7EBD795A/aerial-photo-taken-july-2021-shows-Chinas-new-maglev-transportation-system.jpg"
+           alt="Maglev Train"
+           style="width:100%; border-radius:10px;">
+    `;
+  }
+
+  document.getElementById("answer").innerHTML = text;
+  document.getElementById("overlay").style.display = "flex";
+}
+
+function closeOverlay() {
+  document.getElementById("overlay").style.display = "none";
+}
+</script>
+
+</body>
+</html>
